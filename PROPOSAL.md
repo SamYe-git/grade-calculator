@@ -35,3 +35,4 @@ The Babson undergraduate grade scale (A 4.00, A- 3.67, B+ 3.33, B 3.00, B- 2.67,
 - How to calculate a credit-weighted average in JavaScript.
 - How to make the page redraw the lists and GPAs every time the data changes.
 - How to design the interface to make it more user friendly.
+- Whether people should be allowed to edit a course after adding it, without deleting it. For now, to fix a mistake I delete the course and add it again.
