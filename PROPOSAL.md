@@ -13,7 +13,7 @@ And I think lots of students at Babson have a similar issue calculating their GP
 It remembers two things: the current semester's course list (each course's name, credits and letter grade), and the list of confirmed past semesters. Each confirmed semester has a name made of a term (Fall, Spring or Summer) and a year, such as Fall 2025, plus its own courses.
 
 ## Where the data lives
-The grade scale (A = 4.00 to F = 0.00) is fixed data I write once, so it lives in an array of objects in my JavaScript file. The courses and semesters are data the user creates. Each person's grades are their own and nobody else needs to see them, so they are kept in JavaScript variables and saved to localStorage, which keeps them in that one browser after a refresh.
+The Babson undergraduate grade scale (A 4.00, A- 3.67, B+ 3.33, B 3.00, B- 2.67, C+ 2.33, C 2.00, C- 1.67, D+ 1.33, D 1.00, D- 0.67, F 0.00, and no A+) is fixed data I write once, so it lives in an array of objects in my JavaScript file. The courses and semesters are data the user creates. Each person's grades are their own and nobody else needs to see them, so they are kept in JavaScript variables and saved to localStorage, which keeps them in that one browser after a refresh.
 
 ## What each action changes
 - Add a course: a new course joins the current semester's list, and the semester GPA is worked out again from all the courses in that list. The projected cumulative GPA, which shows what my cumulative GPA would become if this semester were added, updates at the same time.
@@ -25,7 +25,7 @@ The grade scale (A = 4.00 to F = 0.00) is fixed data I write once, so it lives i
 
 ## Features
 - Semester GPA calculator: add courses with their credits and a letter grade picked from the Babson grading scale, and see this semester's GPA update right away. A reset button clears this semester's courses without touching my saved semesters.
-- Input checks: the tool shows what is wrong next to the field and keeps working, with no pop-up boxes, when a course name is empty, the credits are not a positive number or are more than 8, I try to add a semester with no courses to the cumulative, or I do not pick a term and year. Pass (P) courses can be entered, but they do not count toward the GPA.
+- Input checks: the tool shows what is wrong next to the field and keeps working, with no pop-up boxes, when a course name is empty, the credits are not a positive number or are more than 8, I try to add a semester with no courses to the cumulative, or I do not pick a term and year.
 - Projected cumulative GPA: while I enter this semester, the page always shows what my cumulative GPA would become if this semester were added, before I confirm it.
 - Cumulative GPA and history: confirm a semester to add it to my record, see my credit-weighted cumulative GPA and total credits, and see every confirmed semester by name with its courses. I can delete a course or a semester if I entered something wrong, or clear all my data to start over.
 - Saved between visits: my semesters and courses are saved in localStorage, so they are still there after a refresh.
