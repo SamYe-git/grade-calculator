@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Option A — Editorial</title>
+<style>
+  :root {
+    --paper: #f6f3ec;
+    --ink: #111;
+    --muted: #6b665c;
+    --rule: #111;
+    --hair: #cfc9bc;
+    --error: #c8102e;
+    --display: "Helvetica Neue", "Arial Black", Arial, sans-serif;
+    --text: Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 18px/1.5 var(--text);
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 48px 24px 96px; }
+
+  .masthead {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 6px solid var(--rule);
+    padding-bottom: 12px;
+    font: 700 13px/1 var(--display);
+    letter-spacing: .14em; text-transform: uppercase;
+  }
+  h1 {
+    font: 900 clamp(56px, 11vw, 132px)/.88 var(--display);
+    letter-spacing: -.045em;
+    margin: 28px 0 8px;
+  }
+  .dek { font-style: italic; color: var(--muted); margin: 0 0 48px; max-width: 34em; }
+
+  h2 {
+    font: 900 13px/1 var(--display);
+    letter-spacing: .14em; text-transform: uppercase;
+    border-top: 2px solid var(--rule);
+    padding-top: 10px; margin: 56px 0 20px;
+  }
+
+  /* Big numbers */
+  .figures { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid var(--hair); }
+  .figure { padding: 0 0 24px; }
+  .figure + .figure { border-left: 1px solid var(--hair); padding-left: 32px; }
+  .figure .label { font: 700 13px/1 var(--display); letter-spacing: .1em; text-transform: uppercase; }
+  .figure .num {
+    font: 900 clamp(72px, 15vw, 168px)/.9 var(--display);
+    letter-spacing: -.05em; margin: 12px 0 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .figure .note { color: var(--muted); font-size: 15px; font-style: italic; }
+
+  /* Course list */
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left; font: 700 12px/1 var(--display);
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+    padding: 0 0 10px; border-bottom: 2px solid var(--rule);
+  }
+  td { padding: 18px 0; border-bottom: 1px solid var(--hair); vertical-align: baseline; }
+  td.name { font-size: 22px; }
+  td.grade { font: 900 28px/1 var(--display); letter-spacing: -.02em; width: 80px; }
+  td.cr, th.cr { width: 90px; font-variant-numeric: tabular-nums; }
+  td.act, th.act { width: 70px; text-align: right; }
+  .link {
+    background: none; border: 0; padding: 0; cursor: pointer;
+    font: 700 12px/1 var(--display); letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink); border-bottom: 1px solid currentColor;
+  }
+
+  /* Form */
+  form { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 24px; align-items: start; }
+  label { display: block; font: 700 12px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+  input, select {
+    width: 100%; font: 20px/1.3 var(--text); color: var(--ink);
+    background: transparent; border: 0; border-bottom: 2px solid var(--rule);
+    padding: 6px 0; border-radius: 0; appearance: none;
+  }
+  .field.has-error input { border-bottom-color: var(--error); }
+  .error { color: var(--error); font-size: 15px; font-style: italic; margin: 8px 0 0; }
+  .error::before { content: "— "; }
+  .btn {
+    margin-top: 20px; font: 900 14px/1 var(--display); letter-spacing: .1em; text-transform: uppercase;
+    background: var(--ink); color: var(--paper); border: 0; padding: 14px 20px; cursor: pointer;
+  }
+
+  /* Empty state */
+  .empty { padding: 40px 0; border-bottom: 1px solid var(--hair); }
+  .empty .num { font: 900 96px/.9 var(--display); color: var(--hair); margin-bottom: 16px; }
+  .empty p { font-size: 24px; max-width: 22em; margin: 0; }
+  .specimen { font: 700 11px/1 var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+
+  @media (max-width: 640px) {
+    main { padding: 32px 16px 64px; }
+    .figures { grid-template-columns: 1fr; }
+    .figure + .figure { border-left: 0; padding-left: 0; border-top: 1px solid var(--hair); padding-top: 20px; }
+    form { grid-template-columns: 1fr 1fr; }
+    .field.wide, .btn-wrap { grid-column: 1 / -1; }
+    td.name { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="masthead"><span>Babson GPA</span><span>Fall 2026</span></div>
+  <h1>This<br>semester.</h1>
+  <p class="dek">Three courses, ten credits. The numbers below update every time a course is added or removed.</p>
+
+  <section class="figures" aria-label="GPA">
+    <div class="figure">
+      <div class="label">Semester GPA</div>
+      <div class="num">3.40</div>
+      <div class="note">10 letter-graded credits</div>
+    </div>
+    <div class="figure">
+      <div class="label">Cumulative GPA</div>
+      <div class="num">3.49</div>
+      <div class="note">Projected, 40 credits incl. this term</div>
+    </div>
+  </section>
+
+  <h2>Courses</h2>
+  <table>
+    <thead><tr><th>Course</th><th class="cr">Credits</th><th>Grade</th><th class="act"></th></tr></thead>
+    <tbody>
+      <tr><td class="name">Financial Accounting</td><td class="cr">4</td><td class="grade">A−</td><td class="act"><button class="link">Delete</button></td></tr>
+      <tr><td class="name">Microeconomics</td><td class="cr">4</td><td class="grade">B+</td><td class="act"><button class="link">Delete</button></td></tr>
+      <tr><td class="name">Rhetoric II</td><td class="cr">2</td><td class="grade">B</td><td class="act"><button class="link">Delete</button></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Add a course</h2>
+  <form onsubmit="return false">
+    <div class="field wide"><label for="a-name">Course name</label><input id="a-name" value="Statistics"></div>
+    <div class="field has-error">
+      <label for="a-cr">Credits</label><input id="a-cr" value="0" aria-invalid="true" aria-describedby="a-cr-err">
+      <p class="error" id="a-cr-err">Credits must be a number greater than 0 and no more than 8.</p>
+    </div>
+    <div class="field"><label for="a-gr">Grade</label><select id="a-gr"><option>Choose…</option></select></div>
+    <div class="btn-wrap"><button class="btn">Add course</button></div>
+  </form>
+
+  <h2>My record <span class="specimen">· empty state</span></h2>
+  <div class="empty">
+    <div class="num">—</div>
+    <p>No saved semesters yet. Add courses, pick a term and year, then press Add to cumulative.</p>
+  </div>
+</main>
+</body>
+</html>
