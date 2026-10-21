@@ -48,10 +48,11 @@ These live in `css/styles.css`. Every other value in the CSS is built from them.
 
 - **Masthead:** a small all-caps "Babson GPA" with a thick black rule below it.
 - **Page title:** the term and year being worked on, such as "Fall 2026", in very large, heavy type. The term is always Winter, Spring, Summer or Fall, followed by a four-digit year. Until the student has picked both a term and a year, the title says "New semester". It changes as soon as both are picked.
-- **Term and year:** a Term dropdown and a Year dropdown sit side by side right under the title and above the GPA figures, styled like the Add a course fields (all-caps label, plain underline). They are the only Term and Year fields on the page; Add to cumulative uses them.
-- **GPA figures:** the two numbers are not the same size and do not sit side by side.
-  - **Cumulative GPA** comes first, on one line: the words "Cumulative GPA" in large, heavy letters on the left, and the number on the right, larger still. A short note sits below, such as "Projected, 40 credits incl. this term".
-  - **Semester GPA** sits below it, on its own line, in the same left-label, right-number layout but clearly smaller, about half the size of the cumulative. Its note reads, for example, "10 letter-graded credits".
+- **Term and year:** a Term dropdown and a Year dropdown sit side by side right under the title, above the course list, styled like the Add a course fields (all-caps label, plain underline). They are the only Term and Year fields on the page; Add to cumulative uses them.
+- **Order in This semester:** title, Term and Year, Courses, Add a course, the Semester GPA row, the cumulative preview line, then the Add to cumulative and Reset buttons. My record follows below This semester.
+- **Semester GPA:** sits right under the Add a course form, after a rule: the label on the left and the number on the right, about half the size of the cumulative figure in My record. Its note reads, for example, "10 letter-graded credits".
+- **Cumulative preview line:** right above the Add to cumulative button, in the same style as the "10 letter-graded credits" note (`--text-s`, `--ink-muted`): "If you add this semester, your cumulative GPA becomes 3.67 (24 credits)." It is hidden while this semester has no letter-graded courses.
+- **Cumulative GPA (My record only):** the words "Cumulative GPA" in large, heavy letters on the left, and the number on the right, larger still. Total credits sit in their own row below it. This is the only place the big cumulative figure appears.
   - A thin line separates the two rows.
 
 ## States
@@ -60,7 +61,7 @@ These live in `css/styles.css`. Every other value in the CSS is built from them.
 
 - The masthead, the title ("New semester"), the Term and Year dropdowns on "Choose…" and the Add a course form appear as usual.
 - Where the course list would be, a large "—" in faded `--ink` sits above the message "No courses yet. Add your first course to see your semester GPA."
-- Both GPA rows show "—" in place of the number, at their usual sizes, so the layout does not jump when the first course is added.
+- The Semester GPA row shows "—" in place of the number, at its usual size, so the layout does not jump when the first course is added. The cumulative preview line is hidden.
 - My record shows the same "—" with "No saved semesters yet. Add courses, pick a term and year, then press Add to cumulative." Total credits show 0.
 
 ### Invalid input
@@ -72,14 +73,14 @@ These live in `css/styles.css`. Every other value in the CSS is built from them.
 
 ### In use
 
-- The cumulative GPA row leads in very large, heavy type (the number up to about 168px), with the smaller semester GPA row below it, as described in Top of the page.
+- Under the Add a course form, the Semester GPA row is followed by the cumulative preview line and the Add to cumulative button. The big Cumulative GPA figure (the number up to about 168px) leads My record.
 - The course list is a table with a thick rule under the header and a thin line under each row. Course names are regular weight, grades are large and heavy, and each row ends with an underlined Delete text button.
 - My record lists the saved semesters, newest first, in the same table style.
 
 ### After a reset
 
 - The course list, the form fields and any error messages are cleared.
-- This semester returns to its empty look: the "—" and the empty message. The semester GPA row shows "—". The cumulative GPA row shows "—" too, or the saved cumulative GPA if My record has semesters.
+- This semester returns to its empty look: the "—" and the empty message. The semester GPA row shows "—", and the cumulative preview line is hidden.
 - The term-and-year title and the Term and Year dropdowns stay as they were.
 - My record does not change.
 
@@ -87,7 +88,7 @@ These live in `css/styles.css`. Every other value in the CSS is built from them.
 
 - At 640px wide and below, the page padding drops to 16px on the sides, so nothing scrolls sideways.
 - The term-and-year title shrinks with the screen width so "Summer 2026", the longest title, fits on one line.
-- The GPA rows keep their label-left, number-right layout. Both labels and numbers shrink with the screen width, and the cumulative row stays clearly larger than the semester row. If "Cumulative GPA" can't fit beside the number, the label wraps onto two lines rather than pushing the number off the screen.
+- The GPA rows keep their label-left, number-right layout. Both labels and numbers shrink with the screen width, and the cumulative row in My record stays clearly larger than the semester row. If "Cumulative GPA" can't fit beside the number, the label wraps onto two lines rather than pushing the number off the screen.
 - The Add a course form goes from four columns to two: the course name takes a full row, credits and grade share a row, and the Add course button takes a full row.
 - Course names drop to a smaller size so long names wrap cleanly. The table keeps its columns.
 - Buttons and fields are at least 44px tall so they are easy to tap.

@@ -28,14 +28,7 @@
             <option value="">Choose…</option>
           </select>
         </div>
-      </div>
-
-      <div class="figures">
-        <div class="figure figure-semester">
-          <p class="label">Semester GPA</p>
-          <p class="num" id="semester-gpa" aria-live="polite">—</p>
-          <p class="note" id="semester-note">0 letter-graded credits</p>
-        </div>
+        <p class="error" id="term-year-error" hidden></p>
       </div>
 
       <h2>Courses</h2>
@@ -78,6 +71,45 @@
           <button type="submit" class="btn">Add course</button>
         </div>
       </form>
+
+      <div class="figures figures-this-semester">
+        <div class="figure figure-semester">
+          <p class="label">Semester GPA</p>
+          <p class="num" id="semester-gpa" aria-live="polite">—</p>
+          <p class="note" id="semester-note">0 letter-graded credits</p>
+        </div>
+      </div>
+
+      <div class="semester-actions">
+        <p class="preview" id="projected-preview" aria-live="polite" hidden></p>
+        <div class="actions-row">
+          <button type="button" class="btn" id="add-to-cumulative">Add to cumulative</button>
+          <button type="button" class="link" id="reset">Reset</button>
+        </div>
+        <p class="error" id="add-to-cumulative-error" hidden></p>
+      </div>
+    </section>
+
+    <section id="my-record" aria-labelledby="my-record-title">
+      <h2 class="section-title" id="my-record-title">My record</h2>
+
+      <div class="figures">
+        <div class="figure figure-cumulative">
+          <p class="label">Cumulative GPA</p>
+          <p class="num" id="cumulative-gpa">—</p>
+        </div>
+        <div class="figure figure-semester">
+          <p class="label">Total credits</p>
+          <p class="num" id="total-credits">0</p>
+        </div>
+      </div>
+
+      <h2>Saved semesters</h2>
+      <div id="record-empty" class="empty">
+        <p class="num" aria-hidden="true">—</p>
+        <p>No saved semesters yet. Add courses, pick a term and year, then press Add to cumulative.</p>
+      </div>
+      <div id="record-list"></div>
     </section>
   </main>
 

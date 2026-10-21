@@ -2,7 +2,7 @@
 
 ## Goal
 
-A one-page web tool where a Babson undergraduate logs their courses and sees their semester GPA, a projected cumulative GPA, and their cumulative GPA across saved semesters. GPAs are worked out the way the Babson undergraduate catalog describes. Built with plain HTML, CSS and JavaScript, deployed on GitHub Pages, with data kept in `localStorage`. Due Thursday 10/22, 3:00 PM.
+A one-page web tool where a Babson undergraduate logs their courses and sees their semester GPA, a preview of what their cumulative GPA would become, and their cumulative GPA across saved semesters. GPAs are worked out the way the Babson undergraduate catalog describes. Built with plain HTML, CSS and JavaScript, deployed on GitHub Pages, with data kept in `localStorage`. Due Thursday 10/22, 3:00 PM.
 
 ## Audience and key action
 
@@ -33,7 +33,7 @@ Version 1 is a single page with two sections stacked top to bottom. On a phone t
   - P and Fail courses are marked "not in GPA"
   - Delete removes a course right away, with no confirmation
 - **Semester GPA:** worked out again every time a course is added or deleted.
-- **Projected cumulative GPA:** what the cumulative GPA would become if this semester were added. Always visible, and updated with every change.
+- **Cumulative preview line:** a small line right above the Add to cumulative button, such as "If you add this semester, your cumulative GPA becomes 3.67 (24 credits)." The GPA and credits are what My record would show if this semester were added. It is worked out again on every change, never saved, and hidden while this semester has no letter-graded courses. The cumulative GPA figure itself appears only in My record.
 - **Adding the semester to the record:**
   - an **Add to cumulative** button saves the current courses as a semester under the term and year chosen at the top, then clears the course list
   - past semesters are entered the same way
@@ -78,10 +78,10 @@ The look is defined in `DESIGN.md`.
 ## States
 
 - **Ideal (in use):**
-  - This semester shows the course list, the semester GPA and the projected cumulative GPA.
+  - This semester shows the course list, the semester GPA and the cumulative preview line.
   - My record shows the cumulative GPA, total credits and the saved semesters, newest first.
 - **Empty (first visit, or after Clear all data):**
-  - This semester shows the form and "No courses yet. Add your first course to see your semester GPA." The semester GPA and projected cumulative show "—".
+  - This semester shows the form and "No courses yet. Add your first course to see your semester GPA." The semester GPA shows "—", and the cumulative preview line is hidden.
   - My record shows "No saved semesters yet. Add courses, pick a term and year, then press Add to cumulative." The cumulative GPA shows "—" and total credits show 0.
 - **Error (invalid input):** the message appears next to the field it is about, in the error style from `DESIGN.md`. The rest of the page keeps working, and nothing is saved.
   - Course name is empty: "Enter a course name."
@@ -93,9 +93,9 @@ The look is defined in `DESIGN.md`.
   - Saved data in `localStorage` cannot be read: the page starts in the empty state, with no message.
   - Error messages clear once the field is fixed or the action succeeds.
 - **Partial:** some data exists but not all of it.
-  - Courses this semester but no saved semesters: the projected cumulative equals the semester GPA, and My record shows its empty message.
-  - Saved semesters but no current courses: the semester GPA shows "—", and the projected cumulative equals the cumulative GPA.
-  - Only P or Fail courses: the course list shows them, and the GPA shows "—".
+  - Courses this semester but no saved semesters: the preview line shows the semester GPA and credits, and My record shows its empty message.
+  - Saved semesters but no current courses: the semester GPA shows "—", and the preview line is hidden.
+  - Only P or Fail courses: the course list shows them, the GPA shows "—", and the preview line is hidden.
 - **After a reset:** the course list, form fields and errors are cleared, and This semester shows its empty message. My record is unchanged.
 - **Loading:** not reachable. Everything is local and loads instantly.
 

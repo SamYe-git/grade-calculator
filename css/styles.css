@@ -145,6 +145,100 @@ h2 {
   font-size: var(--text-s);
 }
 
+/* GPA rows sit under the Add a course form */
+.figures-this-semester {
+  margin-top: calc(var(--space) * 6);
+  border-top: var(--rule) solid var(--ink);
+  padding-top: calc(var(--space) * 3);
+}
+
+.figure + .figure {
+  padding-top: calc(var(--space) * 3);
+}
+
+/* The cumulative row leads: about twice the semester row */
+.figure-cumulative .label {
+  font-size: max(var(--text-xl), calc(var(--text-title) * 0.4));
+}
+
+.figure-cumulative .num {
+  font-size: calc(var(--text-title) * 1.25);
+}
+
+/* Error under the Term and Year pair spans both columns */
+.term-picker .error {
+  grid-column: 1 / -1;
+  margin-top: 0;
+}
+
+/* Preview line above Add to cumulative, styled like a GPA note */
+.preview {
+  margin: 0 0 calc(var(--space) * 2);
+  color: var(--ink-muted);
+  font-size: var(--text-s);
+}
+
+/* Add to cumulative and Reset */
+.semester-actions {
+  margin-top: calc(var(--space) * 6);
+  padding-top: calc(var(--space) * 3);
+  border-top: var(--rule) solid var(--ink);
+}
+
+.actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space) * 3);
+}
+
+/* My record */
+.section-title {
+  margin-top: calc(var(--space) * 12);
+  margin-bottom: calc(var(--space) * 4);
+  padding-top: calc(var(--space) * 3);
+  border-top: var(--rule-thick) solid var(--ink);
+  font-size: calc(var(--text-title) * 0.5);
+  letter-spacing: var(--tracking-tight);
+  text-transform: none;
+}
+
+.saved-semester + .saved-semester {
+  margin-top: calc(var(--space) * 6);
+}
+
+.saved-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  column-gap: calc(var(--space) * 3);
+  margin-bottom: calc(var(--space) * 2);
+}
+
+.saved-header h3,
+.saved-header p {
+  margin: 0;
+}
+
+.saved-header h3,
+.saved-gpa {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-black);
+  line-height: var(--leading-tight);
+}
+
+.saved-gpa {
+  font-variant-numeric: tabular-nums;
+}
+
+.saved-header .note {
+  flex-basis: 100%;
+  margin-top: var(--space);
+  color: var(--ink-muted);
+  font-size: var(--text-s);
+}
+
 /* Empty state */
 .empty {
   padding: calc(var(--space) * 5) 0;
@@ -349,6 +443,15 @@ button:focus-visible {
 
   td.name {
     font-size: var(--text-m);
+  }
+
+  /* Keep the cumulative row clearly larger than the semester row */
+  .figure-semester .label {
+    font-size: var(--text-l);
+  }
+
+  .figure-semester .num {
+    font-size: calc(var(--text-figure) * 0.75);
   }
 
   td.grade {
