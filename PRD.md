@@ -15,6 +15,11 @@ Version 1 is a single page with two sections stacked top to bottom. On a phone t
 
 ### 1. This semester
 
+- **Term and year (top of the section):**
+  - a Term dropdown (Winter, Spring, Summer, Fall) and a Year dropdown, both starting on "Choose…", right under the section title and above the semester GPA
+  - the year range runs from 4 years before the current year to 1 year after it (2022 to 2027 in 2026)
+  - the section title shows the chosen term and year, such as "Fall 2026", as soon as both are picked; until then it says "New semester"
+  - these are the only Term and Year fields; Add to cumulative uses them
 - **Add a course form:**
   - course name (text)
   - credits (number)
@@ -30,16 +35,14 @@ Version 1 is a single page with two sections stacked top to bottom. On a phone t
 - **Semester GPA:** worked out again every time a course is added or deleted.
 - **Projected cumulative GPA:** what the cumulative GPA would become if this semester were added. Always visible, and updated with every change.
 - **Adding the semester to the record:**
-  - a Term dropdown (Spring, Summer, Fall) and a Year dropdown, both starting on "Choose…"
-  - the year range runs from 4 years before the current year to 1 year after it (2022 to 2027 in 2026)
-  - an **Add to cumulative** button saves the current courses as a semester under that name, then clears the course list
+  - an **Add to cumulative** button saves the current courses as a semester under the term and year chosen at the top, then clears the course list
   - past semesters are entered the same way
 - **Reset button:** clears the current course list, the form fields and any error messages. Saved semesters are not touched.
 
 ### 2. My record
 
 - **Totals:** cumulative GPA and total credits.
-- **Saved semesters:** listed newest first, by year and then by term (Fall is later than Summer, and Summer is later than Spring). Each shows:
+- **Saved semesters:** listed newest first, by year and then by term (Fall is later than Summer, Summer is later than Spring, and Spring is later than Winter). Each shows:
   - its name, such as "Fall 2025"
   - its semester GPA and credits
   - its courses

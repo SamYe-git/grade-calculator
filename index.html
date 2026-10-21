@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Babson GPA Calculator</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <p>Babson GPA</p>
+  </header>
+
+  <main>
+    <section id="this-semester" aria-labelledby="this-semester-title">
+      <h1 id="this-semester-title">New semester</h1>
+
+      <div class="term-picker">
+        <div class="field">
+          <label for="semester-term">Term</label>
+          <select id="semester-term" name="term">
+            <option value="">Choose…</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="semester-year">Year</label>
+          <select id="semester-year" name="year">
+            <option value="">Choose…</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="figures">
+        <div class="figure figure-semester">
+          <p class="label">Semester GPA</p>
+          <p class="num" id="semester-gpa" aria-live="polite">—</p>
+          <p class="note" id="semester-note">0 letter-graded credits</p>
+        </div>
+      </div>
+
+      <h2>Courses</h2>
+      <div id="course-empty" class="empty">
+        <p class="num" aria-hidden="true">—</p>
+        <p>No courses yet. Add your first course to see your semester GPA.</p>
+      </div>
+      <table id="course-table" hidden>
+        <thead>
+          <tr>
+            <th scope="col">Course</th>
+            <th scope="col" class="cr">Credits</th>
+            <th scope="col">Grade</th>
+            <th scope="col" class="act"></th>
+          </tr>
+        </thead>
+        <tbody id="course-list"></tbody>
+      </table>
+
+      <h2>Add a course</h2>
+      <form id="course-form" novalidate>
+        <div class="field wide">
+          <label for="course-name">Course name</label>
+          <input id="course-name" name="name" type="text" autocomplete="off">
+          <p class="error" id="course-name-error" hidden></p>
+        </div>
+        <div class="field">
+          <label for="course-credits">Credits</label>
+          <input id="course-credits" name="credits" type="number" inputmode="decimal" step="any">
+          <p class="error" id="course-credits-error" hidden></p>
+        </div>
+        <div class="field">
+          <label for="course-grade">Grade</label>
+          <select id="course-grade" name="grade">
+            <option value="">Choose…</option>
+          </select>
+          <p class="error" id="course-grade-error" hidden></p>
+        </div>
+        <div class="btn-wrap">
+          <button type="submit" class="btn">Add course</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
