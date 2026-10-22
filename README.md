@@ -37,4 +37,4 @@ The first styled version had about ten horizontal rules of the same weight and v
 
 ## AI output I did not accept
 
-<!-- To fill in -->
+I did not accept that agent put a very big Cumulative GPA inder the this Semester. I move it to my record with a smaller word. 
