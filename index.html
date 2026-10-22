@@ -7,111 +7,120 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="masthead">
+  <header class="masthead page">
     <p>Babson GPA</p>
   </header>
 
   <main>
-    <section id="this-semester" aria-labelledby="this-semester-title">
+    <section id="this-semester" class="page" aria-labelledby="this-semester-title">
       <h1 id="this-semester-title" tabindex="-1">New semester</h1>
 
-      <div class="term-picker">
-        <div class="field">
-          <label for="semester-term">Term</label>
-          <select id="semester-term" name="term">
-            <option value="">Choose…</option>
-          </select>
+      <section class="step" aria-labelledby="step-term-title">
+        <h2 class="step-title" id="step-term-title"><span class="step-num">1</span> Pick a term</h2>
+        <div class="term-picker">
+          <div class="field">
+            <label for="semester-term">Term</label>
+            <select id="semester-term" name="term">
+              <option value="">Choose…</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="semester-year">Year</label>
+            <select id="semester-year" name="year">
+              <option value="">Choose…</option>
+            </select>
+          </div>
+          <p class="error" id="term-year-error" hidden></p>
         </div>
-        <div class="field">
-          <label for="semester-year">Year</label>
-          <select id="semester-year" name="year">
-            <option value="">Choose…</option>
-          </select>
-        </div>
-        <p class="error" id="term-year-error" hidden></p>
-      </div>
+      </section>
 
-      <h2>Courses</h2>
-      <div id="course-empty" class="empty">
-        <p class="num" aria-hidden="true">—</p>
-        <p>No courses yet. Add your first course to see your semester GPA.</p>
-      </div>
-      <table id="course-table" hidden>
-        <thead>
-          <tr>
-            <th scope="col">Course</th>
-            <th scope="col" class="cr">Credits</th>
-            <th scope="col">Grade</th>
-            <th scope="col" class="act"></th>
-          </tr>
-        </thead>
-        <tbody id="course-list"></tbody>
-      </table>
+      <section class="step" aria-labelledby="step-courses-title">
+        <h2 class="step-title" id="step-courses-title"><span class="step-num">2</span> Add your courses</h2>
+        <div id="course-empty" class="empty">
+          <p class="num" aria-hidden="true">—</p>
+          <p>No courses yet. Add your first course to see your semester GPA.</p>
+        </div>
+        <table id="course-table" hidden>
+          <thead>
+            <tr>
+              <th scope="col">Course</th>
+              <th scope="col" class="cr">Credits</th>
+              <th scope="col">Grade</th>
+              <th scope="col" class="act"></th>
+            </tr>
+          </thead>
+          <tbody id="course-list"></tbody>
+        </table>
 
-      <h2>Add a course</h2>
-      <form id="course-form" novalidate>
-        <div class="field wide">
-          <label for="course-name">Course name</label>
-          <input id="course-name" name="name" type="text" autocomplete="off">
-          <p class="error" id="course-name-error" hidden></p>
-        </div>
-        <div class="field">
-          <label for="course-credits">Credits</label>
-          <input id="course-credits" name="credits" type="number" inputmode="decimal" step="any">
-          <p class="error" id="course-credits-error" hidden></p>
-        </div>
-        <div class="field">
-          <label for="course-grade">Grade</label>
-          <select id="course-grade" name="grade">
-            <option value="">Choose…</option>
-          </select>
-          <p class="error" id="course-grade-error" hidden></p>
-        </div>
-        <div class="btn-wrap">
-          <button type="submit" class="btn">Add course</button>
-        </div>
-      </form>
+        <form id="course-form" novalidate>
+          <div class="field wide">
+            <label for="course-name">Course name</label>
+            <input id="course-name" name="name" type="text" autocomplete="off">
+            <p class="error" id="course-name-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="course-credits">Credits</label>
+            <input id="course-credits" name="credits" type="number" inputmode="decimal" step="any">
+            <p class="error" id="course-credits-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="course-grade">Grade</label>
+            <select id="course-grade" name="grade">
+              <option value="">Choose…</option>
+            </select>
+            <p class="error" id="course-grade-error" hidden></p>
+          </div>
+          <div class="btn-wrap">
+            <button type="submit" class="btn">Add course</button>
+          </div>
+        </form>
+      </section>
 
-      <div class="figures figures-this-semester">
-        <div class="figure figure-semester">
-          <p class="label">Semester GPA</p>
-          <p class="num" id="semester-gpa" aria-live="polite">—</p>
-          <p class="note" id="semester-note">0 letter-graded credits</p>
+      <section class="step" aria-labelledby="step-save-title">
+        <h2 class="step-title" id="step-save-title"><span class="step-num">3</span> Save to your record</h2>
+        <div class="figures">
+          <div class="figure figure-semester">
+            <p class="label">Semester GPA</p>
+            <p class="num" id="semester-gpa" aria-live="polite">—</p>
+            <p class="note" id="semester-note">0 letter-graded credits</p>
+          </div>
         </div>
-      </div>
 
-      <div class="semester-actions">
-        <p class="preview" id="projected-preview" aria-live="polite" hidden></p>
-        <div class="actions-row">
-          <button type="button" class="btn" id="add-to-cumulative">Add to cumulative</button>
-          <button type="button" class="link" id="reset">Reset</button>
+        <div class="semester-actions">
+          <p class="preview" id="projected-preview" aria-live="polite" hidden></p>
+          <div class="actions-row">
+            <button type="button" class="btn" id="add-to-cumulative">Add to cumulative</button>
+            <button type="button" class="link" id="reset">Reset</button>
+          </div>
+          <p class="error" id="add-to-cumulative-error" hidden></p>
         </div>
-        <p class="error" id="add-to-cumulative-error" hidden></p>
-      </div>
+      </section>
     </section>
 
-    <section id="my-record" aria-labelledby="my-record-title">
-      <h2 class="section-title" id="my-record-title" tabindex="-1">My record</h2>
+    <section id="my-record" class="record" aria-labelledby="my-record-title">
+      <div class="page">
+        <h2 class="section-title" id="my-record-title" tabindex="-1">My record</h2>
 
-      <div class="figures">
-        <div class="figure figure-cumulative">
-          <p class="label">Cumulative GPA</p>
-          <p class="num" id="cumulative-gpa">—</p>
+        <div class="figures">
+          <div class="figure figure-cumulative">
+            <p class="label">Cumulative GPA</p>
+            <p class="num" id="cumulative-gpa">—</p>
+          </div>
+          <div class="figure figure-semester">
+            <p class="label">Total credits</p>
+            <p class="num" id="total-credits">0</p>
+          </div>
         </div>
-        <div class="figure figure-semester">
-          <p class="label">Total credits</p>
-          <p class="num" id="total-credits">0</p>
+
+        <h2>Saved semesters</h2>
+        <div id="record-empty" class="empty">
+          <p class="num" aria-hidden="true">—</p>
+          <p>No saved semesters yet. Add courses, pick a term and year, then press Add to cumulative.</p>
         </div>
-      </div>
+        <div id="record-list"></div>
 
-      <h2>Saved semesters</h2>
-      <div id="record-empty" class="empty">
-        <p class="num" aria-hidden="true">—</p>
-        <p>No saved semesters yet. Add courses, pick a term and year, then press Add to cumulative.</p>
+        <div class="clear-all" id="clear-all"></div>
       </div>
-      <div id="record-list"></div>
-
-      <div class="clear-all" id="clear-all"></div>
     </section>
   </main>
 

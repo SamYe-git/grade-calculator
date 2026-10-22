@@ -11,7 +11,7 @@ The look comes from `option-a.html`: an editorial direction that looks like a pr
 
 ## The `:root` values
 
-These live in `css/styles.css`. Every other value in the CSS is built from them. The first six are the base; the rest were added for round 1.
+These live in `css/styles.css`. Every other value in the CSS is built from them. The first six are the base; the rest were added for round 1, and `--ink-band` for the scanning restyle.
 
 | Token | Value | Role |
 |---|---|---|
@@ -19,17 +19,18 @@ These live in `css/styles.css`. Every other value in the CSS is built from them.
 | `--ink` | `#111111` | Neutral 2. All text, rules, field underlines and buttons. Lighter text and thin row lines use `--ink` at lower opacity instead of new colors. |
 | `--accent` | `#c8102e` | The only color. Used for errors only: the message text and the underline of the field it is about. |
 | `--font` | `"Helvetica Neue", Helvetica, Arial, sans-serif` | One font family. Hierarchy comes from size, weight (400 to 900) and all caps, not from a second font. |
-| `--space` | `8px` | The spacing step. Every margin, padding and gap is a multiple of it: 8, 16, 24, 32, 48, 96. |
+| `--space` | `8px` | The spacing step. Every margin, padding and gap is a multiple of it: 8, 16, 24, 32, 48, 64, 96. 64 separates the three steps of This semester. |
 | `--radius` | `0` | Square corners on everything: inputs, buttons and the page itself. |
 | `--ink-muted` | `--ink` at 60% | Secondary text: table headings, GPA notes, the "not in GPA" mark. |
-| `--ink-faded` | `--ink` at 20% | The empty-state "—" and the thin line under each table row and between GPA rows. |
-| `--rule-thick` | `6px` | The rule under the masthead. |
-| `--rule` | `2px` | Field underlines, the rule under table headings, and the rule above each section heading. |
+| `--ink-faded` | `--ink` at 20% | The empty-state "—", the thin line under each table row and between GPA rows, and the header line of saved semesters' tables. |
+| `--ink-band` | `--ink` at 5% | The faint full-width background band behind My record. |
+| `--rule-thick` | `6px` | The rule under the masthead, and the one section rule: the top edge of the My record band. |
+| `--rule` | `2px` | Field underlines and the rule under the course list's table headings. Sections and steps are separated by space, not rules. |
 | `--rule-thin` | `1px` | Row lines, and the underline on Delete text buttons. |
-| `--text-xs` | `12px` | All-caps labels: masthead, field labels, table headings, section headings, buttons. |
-| `--text-s` | `15px` | GPA notes, error messages, the "not in GPA" mark. |
-| `--text-m` | `18px` | Body text, field input text, course names on a phone. |
-| `--text-l` | `22px` | Course names, the empty-state message. |
+| `--text-xs` | `12px` | All-caps labels: masthead, field labels, table headings, the Saved semesters heading, buttons. |
+| `--text-s` | `15px` | GPA notes, error messages, the "not in GPA" mark, step numbers, course names in saved semesters. |
+| `--text-m` | `18px` | Body text, field input text, course names on a phone, grades in saved semesters. |
+| `--text-l` | `22px` | Step titles ("1 Pick a term"), course names, the empty-state message. |
 | `--text-xl` | `28px` | Grades in the course list, the Semester GPA label. |
 | `--text-title` | `clamp(48px, 11vw, 132px)` | The page title. Shrinks with the screen width. |
 | `--text-figure` | `clamp(48px, 12vw, 88px)` | The Semester GPA number and the empty-state "—" (about half the planned cumulative number). |
@@ -48,10 +49,13 @@ These live in `css/styles.css`. Every other value in the CSS is built from them.
 
 - **Masthead:** a small all-caps "Babson GPA" with a thick black rule below it.
 - **Page title:** the term and year being worked on, such as "Fall 2026", in very large, heavy type. The term is always Winter, Spring, Summer or Fall, followed by a four-digit year. Until the student has picked both a term and a year, the title says "New semester". It changes as soon as both are picked.
-- **Term and year:** a Term dropdown and a Year dropdown sit side by side right under the title, above the course list, styled like the Add a course fields (all-caps label, plain underline). They are the only Term and Year fields on the page; Add to cumulative uses them.
-- **Order in This semester:** title, Term and Year, Courses, Add a course, the Semester GPA row, the cumulative preview line, then the Add to cumulative and Reset buttons. My record follows below This semester.
-- **Semester GPA:** sits right under the Add a course form, after a rule: the label on the left and the number on the right, about half the size of the cumulative figure in My record. Its note reads, for example, "10 letter-graded credits".
+- **Three numbered steps:** under the title, This semester is split into "1 Pick a term", "2 Add your courses" and "3 Save to your record". Each step title is `--text-l`, black weight, normal case, clearly larger than the 12px field labels, and starts with its number in a 32px black square with `--paper` text. Steps are separated by 64px of space, not rules.
+- **Step 1, Pick a term:** a Term dropdown and a Year dropdown side by side, styled like the Add a course fields (all-caps label, plain underline). They are the only Term and Year fields on the page; Add to cumulative uses them.
+- **Step 2, Add your courses:** the course list, then the Add a course form 32px below it.
+- **Step 3, Save to your record:** the Semester GPA row, the cumulative preview line, then the Add to cumulative and Reset buttons, with no rule or line anywhere inside the step.
+- **Semester GPA:** the label on the left and the number on the right, about half the size of the cumulative figure in My record. Its note reads, for example, "10 letter-graded credits".
 - **Cumulative preview line:** right above the Add to cumulative button, in the same style as the "10 letter-graded credits" note (`--text-s`, `--ink-muted`): "If you add this semester, your cumulative GPA becomes 3.67 (24 credits)." It is hidden while this semester has no letter-graded courses.
+- **My record band:** My record sits on a faint `--ink-band` background that runs the full width of the window, with the page's one thick section rule (`--rule-thick`) along its top edge. Its content keeps the page width.
 - **Cumulative GPA (My record only):** the words "Cumulative GPA" in large, heavy letters on the left, and the number on the right, larger still. Total credits sit in their own row below it. This is the only place the big cumulative figure appears.
   - A thin line separates the two rows.
 
@@ -73,9 +77,9 @@ These live in `css/styles.css`. Every other value in the CSS is built from them.
 
 ### In use
 
-- Under the Add a course form, the Semester GPA row is followed by the cumulative preview line and the Add to cumulative button. The big Cumulative GPA figure (the number up to about 168px) leads My record.
-- The course list is a table with a thick rule under the header and a thin line under each row. Course names are regular weight, grades are large and heavy, and each row ends with an underlined Delete text button.
-- My record lists the saved semesters, newest first, in the same table style.
+- In step 3, the Semester GPA row is followed by the cumulative preview line and the Add to cumulative button. The big Cumulative GPA figure (the number up to about 168px) leads My record.
+- The course list is a table with a 2px rule under the header and a thin line under each row. Course names are regular weight, grades are large and heavy, and each row ends with an underlined Delete text button.
+- My record lists the saved semesters, newest first. Their course tables look read-only: text in `--ink-muted`, course names at `--text-s`, grades at `--text-m`, tighter rows, and a thin `--ink-faded` line under the headings instead of the 2px rule. Each semester's name and GPA stay full `--ink`.
 
 ### After a reset
 
