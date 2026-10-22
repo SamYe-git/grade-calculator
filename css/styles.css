@@ -239,6 +239,48 @@ h2 {
   font-size: var(--text-s);
 }
 
+/* Delete semester and Clear all data, with their on-page confirmation */
+.confirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space) calc(var(--space) * 2);
+  margin-top: calc(var(--space) * 2);
+}
+
+.confirm p {
+  margin: 0;
+  font-size: var(--text-s);
+  font-weight: var(--weight-bold);
+}
+
+.confirm span {
+  color: var(--ink-muted);
+}
+
+/* Edit and Delete semester sit side by side under each saved semester */
+.saved-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: calc(var(--space) * 3);
+  margin-top: calc(var(--space) * 2);
+}
+
+.saved-actions .confirm {
+  margin-top: 0;
+}
+
+.saved-actions .error {
+  flex-basis: 100%;
+}
+
+.clear-all {
+  margin-top: calc(var(--space) * 6);
+  padding-top: calc(var(--space) * 3);
+  border-top: var(--rule) solid var(--ink);
+}
+
 /* Empty state */
 .empty {
   padding: calc(var(--space) * 5) 0;
@@ -439,6 +481,11 @@ button:focus-visible {
 
   .btn {
     width: 100%;
+  }
+
+  /* Keep "Yes, delete / Cancel" on one line */
+  .confirm .btn {
+    width: auto;
   }
 
   td.name {

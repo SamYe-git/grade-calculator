@@ -46,7 +46,8 @@ Version 1 is a single page with two sections stacked top to bottom. On a phone t
   - its name, such as "Fall 2025"
   - its semester GPA and credits
   - its courses
-  - a Delete semester button
+  - an Edit button and a Delete semester button, side by side
+- **Edit semester:** moves that semester out of My record and back into This semester: its courses fill the course list, and the Term and Year dropdowns show its term and year. The page scrolls smoothly up to This semester. The student changes the courses there and presses Add to cumulative again. A term or year already chosen in This semester is replaced by the saved semester's. If This semester already has courses, Edit is refused and "Add or reset this semester first." appears next to the Edit button.
 - **Delete semester:** asks for confirmation on the page, with no pop-up. The button area turns into "Delete Fall 2025? **Yes, delete** / Cancel."
 - **Clear all data:** confirmed the same way ("Delete all courses and semesters? **Yes, clear all** / Cancel"). It empties `localStorage` and returns the page to the first-visit state.
 
@@ -90,6 +91,7 @@ The look is defined in `DESIGN.md`.
   - Add to cumulative with no courses: "Add at least one course before adding this semester."
   - Add to cumulative without a term or year: "Choose a term and a year."
   - Add to cumulative with a name already saved: "Fall 2025 is already in your record."
+  - Edit while This semester has courses: "Add or reset this semester first." next to the Edit button.
   - Saved data in `localStorage` cannot be read: the page starts in the empty state, with no message.
   - Error messages clear once the field is fixed or the action succeeds.
 - **Partial:** some data exists but not all of it.
@@ -106,10 +108,11 @@ The look is defined in `DESIGN.md`.
 3. Add the semester as Fall 2025. It appears in My record, the cumulative GPA and total credits update, and the course list clears. Trying to add Fall 2025 again is refused.
 4. Delete a saved semester (after confirming), refresh the page, and the remaining data is still there with the cumulative GPA recalculated.
 5. Clear all data (after confirming). The page returns to the first-visit empty state, and it stays that way after a refresh.
+6. With This semester empty, press Edit on Fall 2025. The page scrolls up, the title reads "Fall 2025", its courses are in the course list, and it is gone from My record. Pressing Edit while This semester has courses shows "Add or reset this semester first." and changes nothing; with only a term and year chosen, Edit replaces them.
 
 ## Out of scope
 
-- Editing a course or semester in place. Delete it and add it again.
+- Editing a course in place. Delete it and add it again.
 - Accounts, logins, a server, a database or any outside API.
 - Sharing data across browsers or devices.
 - Transfer credit, withdrawals (W) and incompletes (I).

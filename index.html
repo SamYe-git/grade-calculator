@@ -13,7 +13,7 @@
 
   <main>
     <section id="this-semester" aria-labelledby="this-semester-title">
-      <h1 id="this-semester-title">New semester</h1>
+      <h1 id="this-semester-title" tabindex="-1">New semester</h1>
 
       <div class="term-picker">
         <div class="field">
@@ -91,7 +91,7 @@
     </section>
 
     <section id="my-record" aria-labelledby="my-record-title">
-      <h2 class="section-title" id="my-record-title">My record</h2>
+      <h2 class="section-title" id="my-record-title" tabindex="-1">My record</h2>
 
       <div class="figures">
         <div class="figure figure-cumulative">
@@ -110,6 +110,8 @@
         <p>No saved semesters yet. Add courses, pick a term and year, then press Add to cumulative.</p>
       </div>
       <div id="record-list"></div>
+
+      <div class="clear-all" id="clear-all"></div>
     </section>
   </main>
 
